@@ -27,5 +27,10 @@ func main() {
 		c.String(200, id)
 	})
 
+	r.GET("/echoall/*id", func(c *gin.Context) {
+		id := c.Param("id")
+		c.String(200, id)
+	})
+
 	r.Run(":8080")
 }
