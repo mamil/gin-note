@@ -11,12 +11,12 @@ func main() {
 	r := gin.Default()
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"name":"gin-note",
+			"name": "gin-note",
 		})
 	})
 
 	// user
-	users := []User{{ID:1,Name:"tom"}, {ID:2,Name:"tim"}}
+	users := []User{{ID: 1, Name: "tom"}, {ID: 2, Name: "tim"}}
 	r.GET("/users", func(c *gin.Context) {
 		c.JSON(200, users)
 	})
@@ -37,5 +37,11 @@ func main() {
 	r.GET("/q", func(c *gin.Context) {
 		c.String(200, c.Query("q"))
 	})
+
+	// form
+	r.POST("/form", func(c *gin.Context) {
+		c.String(200, c.PostForm("form"))
+	})
+
 	r.Run(":8080")
 }
