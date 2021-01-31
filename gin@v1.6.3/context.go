@@ -420,7 +420,7 @@ func (c *Context) getQueryCache() {
 // a boolean value whether at least one value exists for the given key.
 func (c *Context) GetQueryArray(key string) ([]string, bool) {
 	c.getQueryCache()
-	if values, ok := c.queryCache[key]; ok && len(values) > 0 {
+	if values, ok := c.queryCache[key]; ok && len(values) > 0 { // 数组中取解析之后的键值
 		return values, true
 	}
 	return []string{}, false
