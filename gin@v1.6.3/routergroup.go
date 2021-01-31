@@ -58,7 +58,7 @@ func (group *RouterGroup) Use(middleware ...HandlerFunc) IRoutes {
 func (group *RouterGroup) Group(relativePath string, handlers ...HandlerFunc) *RouterGroup {
 	return &RouterGroup{
 		Handlers: group.combineHandlers(handlers),
-		basePath: group.calculateAbsolutePath(relativePath),
+		basePath: group.calculateAbsolutePath(relativePath), // 路径拼接
 		engine:   group.engine,
 	}
 }
@@ -70,7 +70,7 @@ func (group *RouterGroup) BasePath() string {
 }
 
 func (group *RouterGroup) handle(httpMethod, relativePath string, handlers HandlersChain) IRoutes {
-	absolutePath := group.calculateAbsolutePath(relativePath)
+	absolutePath := group.calculateAbsolutePath(relativePath) // 相对于当前group的相对路径
 	handlers = group.combineHandlers(handlers)
 	group.engine.addRoute(httpMethod, absolutePath, handlers)
 	return group.returnObj()

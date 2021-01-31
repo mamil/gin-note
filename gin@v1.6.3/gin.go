@@ -129,7 +129,7 @@ func New() *Engine {
 	engine := &Engine{
 		RouterGroup: RouterGroup{
 			Handlers: nil,
-			basePath: "/",
+			basePath: "/", // 根节点
 			root:     true,
 		},
 		FuncMap:                template.FuncMap{},
