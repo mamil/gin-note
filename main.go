@@ -21,17 +21,19 @@ func main() {
 		c.JSON(200, users)
 	})
 
-	// echo
+	// /echo/123
 	r.GET("/echo/:id", func(c *gin.Context) {
 		id := c.Param("id")
 		c.String(200, id)
 	})
 
+	// /echoall/12/12
 	r.GET("/echoall/*id", func(c *gin.Context) {
 		id := c.Param("id")
 		c.String(200, id)
 	})
 
+	// /q?q=aaa
 	r.GET("/q", func(c *gin.Context) {
 		c.String(200, c.Query("q"))
 	})
