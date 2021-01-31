@@ -32,5 +32,8 @@ func main() {
 		c.String(200, id)
 	})
 
+	r.GET("/q", func(c *gin.Context) {
+		c.String(200, c.Query("q"))
+	})
 	r.Run(":8080")
 }
