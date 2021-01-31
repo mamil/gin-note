@@ -57,7 +57,7 @@ func (group *RouterGroup) Use(middleware ...HandlerFunc) IRoutes {
 // For example, all the routes that use a common middleware for authorization could be grouped.
 func (group *RouterGroup) Group(relativePath string, handlers ...HandlerFunc) *RouterGroup {
 	return &RouterGroup{
-		Handlers: group.combineHandlers(handlers),
+		Handlers: group.combineHandlers(handlers),           // 路由中间件
 		basePath: group.calculateAbsolutePath(relativePath), // 路径拼接
 		engine:   group.engine,
 	}
